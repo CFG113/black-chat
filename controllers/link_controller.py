@@ -39,7 +39,7 @@ def join_session(link):
 @link_bp.route('/<link>', methods=['DELETE'])
 @handle_errors
 def delete_link(link):
-    link_obj = LinkService.get_link_by_link(link)
+    link_obj = LinkService.get_link_by_link_id(link)
     if not link_obj:
         return not_found("Link not found")
     LinkService.delete_link(link)
