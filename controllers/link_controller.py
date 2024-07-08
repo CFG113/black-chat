@@ -28,7 +28,7 @@ def get_session_id_by_link(link_id):
 @link_bp.route('/join/<link>', methods=['PUT'])
 @handle_errors
 def join_session(link):
-    link_obj = LinkService.get_link_by_link(link)
+    link_obj = LinkService.get_link_by_link_id(link)
     if not link_obj:
         return not_found("Link not found")
     if link_obj.is_used:

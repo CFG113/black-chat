@@ -16,7 +16,7 @@ class LinkService:
 
     @staticmethod
     def get_link_by_link(link):
-        return LinkRepository.get_link_by_link(link)
+        return LinkRepository.get_link_by_link_id(link)
 
     @staticmethod
     def delete_link(link):

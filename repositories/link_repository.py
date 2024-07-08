@@ -32,7 +32,7 @@ class LinkRepository:
         return result[0] if result else None
 
     @staticmethod
-    def get_link_by_link(link):
+    def get_link_by_link_id(link):
         conn = db.connect()
         cursor = conn.cursor()
         cursor.execute("SELECT link_id, session_id, link, is_used FROM links WHERE link = %s;", (link,))
