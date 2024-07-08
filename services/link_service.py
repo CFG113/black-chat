@@ -15,7 +15,7 @@ class LinkService:
         return LinkRepository.get_session_id_by_link(link_id)
 
     @staticmethod
-    def get_link_by_link(link):
+    def get_link_by_link_id(link):
         return LinkRepository.get_link_by_link_id(link)
 
     @staticmethod
