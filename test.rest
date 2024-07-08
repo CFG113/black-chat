@@ -1,0 +1,49 @@
+### Create a new session
+POST http://localhost:5000/sessions/create
+Content-Type: application/json
+
+###
+
+### Get a session by ID
+GET http://localhost:5000/sessions/a15c9448-9b80-4b32-9f33-919e56cf5eb9
+Content-Type: application/json
+
+###
+
+### End a session
+DELETE http://localhost:5000/sessions/end-session
+Content-Type: application/json
+
+{
+  "session_id": "c49f4272-5fd2-4a5f-ac9f-60d22eb30824"
+}
+
+###
+
+### Generate a new link
+POST http://localhost:5000/links/generate
+Content-Type: application/json
+
+{
+  "session_id": "a15c9448-9b80-4b32-9f33-919e56cf5eb9"
+}
+
+###
+
+### Get session ID by link
+GET http://localhost:5000/links/session/3ae83ff3-714d-43bd-add5-b31ce39e91a0
+Content-Type: application/json
+
+###
+
+### Join a session using a link
+PUT http://localhost:5000/links/join/3ae83ff3-714d-43bd-add5-b31ce39e91a0
+Content-Type: application/json
+
+###
+
+### Delete a link
+DELETE http://localhost:5000/links/3ae83ff3-714d-43bd-add5-b31ce39e91a0
+Content-Type: application/json
+
+###
