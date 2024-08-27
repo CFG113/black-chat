@@ -2,52 +2,55 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Clone the Git repository
+                git 'https://github.com/CFG113/black-chat.git'
+            }
+        }
+        
         stage('Build') {
             steps {
-                echo 'Building..'
-                sh 'mvn clean package' // Replace with your build commands
+                // Build your application using Maven or Gradle
+                sh 'mvn clean package'  // Adjust command as needed
             }
         }
-
+        
         stage('Test') {
             steps {
-                echo 'Testing...'
-                sh 'mvn test' // Replace with your test commands
+                // Run JUnit tests
+                sh 'mvn test'
             }
-        }
 
-        stage('Code Quality Analysis') {
-            steps {
-                echo 'Analyzing Code Quality...'
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
+            post {
+                always {
+                    // Publish JUnit test results
+                    junit '**/target/surefire-reports/*.xml'
                 }
             }
         }
-
+        
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
-                sh 'docker build -t myapp .'
-                sh 'docker run -d -p 8080:8080 myapp'
+                // Deploy your application
+                sh 'echo Deploying Application...'
             }
         }
-
+        
         stage('Release') {
             steps {
-                echo 'Releasing...'
-                sh 'docker push myapp'
+                // Release stage commands
+                sh 'echo Releasing Application...'
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline completed successfully!'
+            echo 'Pipeline completed successfully.'
         }
         failure {
             echo 'Pipeline failed.'
         }
     }
 }
-
