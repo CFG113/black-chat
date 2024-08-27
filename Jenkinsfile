@@ -11,8 +11,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                // Build your application using Maven or Gradle
-                sh 'mvn clean package'  // Adjust command as needed
+                sh 'mvn clean package' 
             }
         }
         
